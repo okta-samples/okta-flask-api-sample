@@ -27,17 +27,30 @@ login_manager.init_app(app)
 APP_STATE = 'ApplicationState'
 NONCE = 'SampleNonce'
 
+@app.before_request
+def check_route_access():
+    if current_user.is_authenticated:
+        return  # Access granted
+    else:
+        return redirect(url_for('login'))
+
+def public_route(decorated_function):
+    decorated_function.is_public = True
+    return decorated_function
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.get(user_id)
 
 
 @app.route("/")
+@public_route
 def hello():
     return render_template("hello.html")
 
 
 @app.route("/login")
+@public_route
 def login():
     # get request params
     query_params = {'client_id': os.environ['CLIENT_ID'],
@@ -58,7 +71,6 @@ def login():
 
 
 @app.route("/whoami")
-@login_required
 def whoami():
     return render_template("whoami.html", user=current_user)
 
