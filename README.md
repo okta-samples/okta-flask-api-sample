@@ -19,7 +19,7 @@ Before running this sample, you will need the following:
 
 ## Get the Code
 
-Grab and configure this project using `okta start flask`.
+Grab and configure this project using `okta start flask-api`.
 
 Follow the instructions printed to the console.
 
