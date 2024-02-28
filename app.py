@@ -1,15 +1,15 @@
 import pybase64
+import secrets
 
 from dotenv import load_dotenv
-from flask import Flask, make_response, render_template, redirect, request, url_for
+from flask import Flask, make_response, request, session
 from flask_cors import CORS
 
 load_dotenv('.okta.env')
 
 app = Flask(__name__)
+app.config.update({'SECRET_KEY': secrets.token_urlsafe()})
 CORS(app)
-
-STATE = {}
 
 @app.before_request
 def read_authorization_header():
@@ -21,15 +21,14 @@ def read_authorization_header():
         payload = sections[1]
         # signature = sections[2]
         jsonPayload = pybase64.b64decode(payload + '==')
-        STATE["authpayload"]=jsonPayload
+        session["authpayload"]=jsonPayload
     else:
-        STATE["authpayload"]=None
+        session["authpayload"]=None
 
 @app.route("/whoami")
 def whoami():
-    if STATE["authpayload"] != None:
-        response = make_response(STATE["authpayload"])
-        return response
+    if session["authpayload"] != None:
+        return make_response(session["authpayload"])
     else:
         return make_response("anonymous")
 
