@@ -19,6 +19,7 @@ def read_authorization_header():
         sections = bearer_removed.split('.')
         # header = sections[0]
         payload = sections[1]
+        # This code is not production ready. Additional signature validation should be done to ensure the token is valid
         # signature = sections[2]
         jsonPayload = pybase64.b64decode(payload + '==')
         session["authpayload"]=jsonPayload
