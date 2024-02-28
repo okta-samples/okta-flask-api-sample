@@ -30,7 +30,7 @@ def whoami():
     if session["authpayload"] != None:
         return make_response(session["authpayload"])
     else:
-        return make_response("anonymous")
+        return make_response("anonymous", 401)
 
 @app.route("/hello")
 def get_anonymous():
