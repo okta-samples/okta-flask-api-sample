@@ -1,6 +1,6 @@
 # Python Flask Quickstart to Protect Your API
  
-This repository contains a sample of extending [Okta](https://www.okta.com/) authentication using [the redirect model in a Python Flask app](https://developer.okta.com/docs/guides/sign-into-web-app/python/main/) to protect the API. 
+This repository contains a sample of extending [Okta](https://www.okta.com/) authentication using [machine-to-machine sign-in flow]([https://developer.okta.com/docs/guides/sign-into-web-app/python/main/](https://developer.okta.com/docs/guides/protect-your-api/python/main/) to protect the API. 
 
 Read more about getting started with Okta and authentication best practices on the [Okta Developer Portal](https://developer.okta.com).
 
