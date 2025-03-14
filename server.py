@@ -7,7 +7,6 @@ from flask import Flask, make_response, request, jsonify
 from flask_cors import CORS
 from okta_jwt_verifier import BaseJWTVerifier
 
-load_dotenv('.okta.env')
 
 app = Flask(__name__)
 app.config.update({'SECRET_KEY': secrets.token_urlsafe()})
