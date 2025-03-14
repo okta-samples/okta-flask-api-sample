@@ -1,6 +1,5 @@
 import pybase64
 import secrets
-import os
 import traceback
 import asyncio
 from dotenv import load_dotenv
@@ -14,7 +13,7 @@ app = Flask(__name__)
 app.config.update({'SECRET_KEY': secrets.token_urlsafe()})
 CORS(app)
 
-ORG_URL = os.getenv('ORG_URL')
+ORG_URL = 'https://{yourOktaDomain}/oauth2/default'
 
 async def verify_token_async(token, issuer):
     """Verify access token."""
