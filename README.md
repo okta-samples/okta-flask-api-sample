@@ -7,12 +7,15 @@ The sample uses the [Okta JWT Verifier SDK](https://github.com/okta/okta-jwt-ver
 This code sample demonstrates
 * Configuring Okta
 * Protecting routes
-* Verifying the JWT
+* Verifying the access token
 
 ## Prerequisites - create an OIDC organization in Okta
 
 Create a free Okta Developer account to create your Okta organization. You can do this through the [Okta CLI](https://cli.okta.com/) or through the [Okta Developer admin](https://developer.okta.com) dashboard.
 
+Before running this sample, you will need the following:
+
+* [The Okta CLI Tool](https://github.com/okta/okta-cli#installation)
 
 * An Okta Developer Account (create one using `okta register`, or configure an existing one with `okta login`)
 
