@@ -13,41 +13,32 @@ This code sample demonstrates
 
 Create a free Okta Developer account to create your Okta organization. You can do this through the [Okta CLI](https://cli.okta.com/) or through the [Okta Developer admin](https://developer.okta.com) dashboard.
 
-When using the Okta CLI run the following command:
 
-```shell
-okta register
-```
+* An Okta Developer Account (create one using `okta register`, or configure an existing one with `okta login`)
 
-Ensure that your default custom authorization server has an access policy. Add an access policy if it's not there. See [Create access polices](https://help.okta.com/okta_help.htm?type=oie&id=ext-create-access-policies).
+Ensure that your [default custom authorization server](https://developer.okta.com/docs/concepts/auth-servers/#default-custom-authorization-server) has an access policy. Add an access policy if it's not there. See [Create access polices](https://help.okta.com/okta_help.htm?type=oie&id=ext-create-access-policies).
 
-You will need your Okta domain and Audience.
+## Get the Code
 
-Update server.js with your Okta settings.
+Grab and configure this project using `okta start flask-api`.
 
-```
-ORG_URL = 'https://{yourOktaDomain}/oauth2/default'
-
-async def verify_token_async(token, issuer):
-    """Verify access token."""
-    jwt_verifier = BaseJWTVerifier(issuer=issuer, audience='api://default')
-```
+Follow the instructions printed to the console. 
 
 ## Run the Example
 
 To run this application, install its dependencies:
 
 ```
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 With variables set, start your app:
 
 ```
-python3 -m flask run --port=5000
+python3 -m flask --app server.py run 
 ```
 
-Use your favorite HTTP Client to call the API. For authenticated calls, follow the steps in [Send a request to your API endpoint using Postman]() of the quick start.
+Use your favorite HTTP Client to call the API endpoints http://127.0.0.1:5000/api/hello and http://127.0.0.1:5000/api/whoami. For authenticated calls, follow the steps in [Send a request to your API endpoint using Postman](https://developer.okta.com/docs/guides/protect-your-api/python/main/#test-with-postman) of the quick start.
 
 ## Helpful resources
 
