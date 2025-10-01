@@ -15,7 +15,7 @@ CORS(app)
 
 load_dotenv('.okta.env')
 
-ORG_URL = os.getenv('ORG_URL')
+ISSUER = os.getenv('ISSUER')
 
 async def verify_token_async(token, issuer):
     print(token)
@@ -35,7 +35,7 @@ def is_authorized(request):
     """Get verify and get claims from access token."""
     try:
         token = request.headers.get("Authorization").split("Bearer ")[1]
-        claims = asyncio.run(verify_token_async(token, f'{ORG_URL}'))
+        claims = asyncio.run(verify_token_async(token, f'{ISSUER}'))
         return claims
     except Exception:
         return None
